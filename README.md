@@ -1,0 +1,2 @@
+# masterkeywikz.github.io
+blog
