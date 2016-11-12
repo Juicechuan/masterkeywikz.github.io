@@ -1,0 +1,70 @@
+---
+layout: post
+title:  "Coding Statistics"
+date:   2016-10-28 23:23:32 -0400
+categories: Algorithm
+---
+# Statistics
+- Sorting 
+- Scanline (Sweep line)
+- Traversals/Search
+  - tree
+- Binary search
+- MST/shortest paths
+- Dynamic Programming
+- Simple data structures:
+  - dsu, sets, map, heap, queue, stack, deque
+- Advanced (maybe?) data structures:
+  - segment tree
+  - binary indexed tree 
+
+# Examples:
+---------
+
+
+[regular expression matching](https://leetcode.com/problems/regular-expression-matching/): typical backtracking, caching state in the searching path for better practical run time; dp for O(n^2) worst case run time.
+
+[unique binary search trees](https://leetcode.com/problems/unique-binary-search-trees/): can also use recursive method to search the whole possible solution space, which in fact has the size as the [Catalan Number](https://en.wikipedia.org/wiki/Catalan_number); can be optimized to O(n^2) using dp.
+
+[unique binary search trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/): backtracking using recursive method to search the whole possible solution space; learned new way to construct the partial solution bottom up; different from the way used in find all paths in binary tree which is building partial solution in a depth-first way.
+
+[Wildcard matching](https://leetcode.com/problems/wildcard-matching/): a simplified version of regular expression. Following are different approaches:
+- backtracking using recursive method to search the whole possible solution space, which is exponential to the length of the input string; time is o(2^n) while space is O(n) but using program stack memory.
+- dp could be applied to build the partial matching result incrementally; though traditional method is O(m*n) space, we could use local variable to reduce the space complexity to O(m).
+
+[Maximal Square](https://leetcode.com/problems/maximal-square/): typical dp problem, the point is to correctly define the representation of dynamic function(maximal square side length ending at (i,j); also add additional dimension to avoid edge cases e.g. ['0'], ['01']
+
+[House Robber](https://leetcode.com/problems/house-robber/): a little bit tricky to think about test cases. 1) what if empty list '[]' 2) what if list length < 3 '[1,2]' 3) what if the previous robbed is not the one before previous house '[2,1,1,2]'.
+
+[House Robber II](https://leetcode.com/problems/house-robber-ii/): run two passes / use two dynamic functions to stimulate two conditions: 1) starting with the first house but leaving out the last one. 2) starting with the second house and go to the last house. This is what implied by the circle.
+
+[Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/): Definitely worth clarifying the problem: 1) what is the definition of tree node structure, does it contains parent reference 2) 
+
+If no parent reference, one straightforward approach is to find the path for both nodes, then extracts the lowest common parent along the path, this will give a O(n) run time, where n is the number of nodes in the tree. 3) another approach would be divide and conquer, the implementation is that if we run into some node equals one of the node in query, we just return this node (found); if current node not equal to one of the node in query, we will exam its left/right child. The argument behind this is that
+ - I. If the other node is under current found node, then we are done, since this will be the lowest common ancestor (like in Case 1).
+ - II. If the other node is in other branch, we'll definitely find it with following recursive run. (like in Case 2).
+
+```
+Case 1:
+    0
+   /
+  1
+ / \
+2   3  ,  find LCA of 1,2 
+```
+
+```
+Case 1:
+    0
+   / \ 
+  1   4
+ / \
+2   3  ,  find LCA of 2,4 
+```
+
+>**Follow up:** What if we want to find all the common ancestors
+
+
+------
+
+[Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/); [First Missing Positive](https://leetcode.com/problems/first-missing-positive/); [Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/):
